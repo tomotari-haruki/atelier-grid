@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="見栄えとアクセシビリティを両立するレスポンシブ実装のチェックポイント。" />
   <title>アクセシビリティを壊さないレスポンシブ実装術 | Atelier Grid</title>
-  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body class="article-page">
   <a class="skip-link" href="#main">本文へ移動</a>
@@ -21,14 +21,14 @@
         <div><p class="eyebrow">UI/UX / Accessibility</p><h1>アクセシビリティを壊さないレスポンシブ実装術</h1><p class="article-lede">スマホ対応で文字を小さくし、要素を詰め込むほど、体験は脆くなります。美しいレイアウトを保ちながら、読める・押せる・迷わない状態を作ります。</p></div>
         <div class="article-meta-grid"><p><strong>Published</strong><span>2026-04-24</span></p><p><strong>Read Time</strong><span>6 min</span></p><p><strong>Focus</strong><span>Responsive / WCAG / QA</span></p></div>
       </header>
-      <figure class="article-cover"><img src="../assets/images/post4-cover.png" alt="アクセシビリティを保つレスポンシブ実装を表現した記事カバー" /></figure>
+      <figure class="article-cover"><img src="../post4-cover.png" alt="アクセシビリティを保つレスポンシブ実装を表現した記事カバー" /></figure>
       <div class="article-layout">
         <aside class="article-aside"><nav aria-label="Table of contents"><p class="meta">Contents</p><a href="#density">密度</a><a href="#type">文字設計</a><a href="#touch">タッチ領域</a><a href="#media">画像</a><a href="#qa">検証</a></nav><div class="article-note"><p class="meta">Takeaway</p><p>レスポンシブは幅の調整ではなく、優先度の再編集です。</p></div></aside>
         <div class="article-content">
           <h2 id="density">小さい画面では情報の順番を変える</h2>
           <p>デスクトップの横並びをそのまま縦に積むと、重要なCTAが遠くなります。スマホでは、導入文、証拠、主要アクション、詳細の順に再編集し、読み手が迷わない流れを作ります。</p>
           <p>優先度の再編集とは、要素を減らすことだけではありません。PCでは横に置いて比較させる情報を、スマホでは「結論、理由、証拠、次の行動」の順に並べ替えることです。画面幅が狭いほど、読み手は一度に保持できる情報が少なくなります。</p>
-          <figure class="article-inline-figure"><img src="../assets/images/article-4-detail.png" alt="デスクトップとスマホのレスポンシブUI検証を表現した画像" loading="lazy" /><figcaption>レスポンシブ設計では、見た目の縮小ではなく、読み順、押しやすさ、状態表示を同時に見直します。</figcaption></figure>
+          <figure class="article-inline-figure"><img src="../article-4-detail.png" alt="デスクトップとスマホのレスポンシブUI検証を表現した画像" loading="lazy" /><figcaption>レスポンシブ設計では、見た目の縮小ではなく、読み順、押しやすさ、状態表示を同時に見直します。</figcaption></figure>
           <h2 id="type">見出しは短く、本文は行長を守る</h2>
           <p>スマホで見出しが2文字だけ次の行に落ちると、画面の完成度が急に下がります。見出しの言葉を短くする、最大幅を調整する、行間を少し広げるなど、CSSとコピーの両方で整えます。</p>
           <p>本文は1行が長すぎても短すぎても読みづらくなります。カード内の本文、記事本文、メタ情報でそれぞれ行長を変え、見出しだけが大きく浮かないようにします。レスポンシブの品質は、派手なレイアウトよりもこうした細部に表れます。</p>
