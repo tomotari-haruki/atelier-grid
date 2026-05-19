@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="見栄えとアクセシビリティを両立するレスポンシブ実装のチェックポイント。" />
+  <title>アクセシビリティを壊さないレスポンシブ実装術 | Atelier Grid</title>
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body class="article-page">
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
+  <header class="site-header"><div class="container nav"><a class="brand" href="../index.html"><span class="brand-mark">AG</span><span>Atelier Grid</span></a><nav class="nav-links" aria-label="Article navigation"><a href="../index.html#journal">Journal</a><a href="../index.html#contact">Contact</a></nav></div></header>
+  <main id="main" class="container article-shell">
+    <article>
+      <header class="article-hero">
+        <div><p class="eyebrow">UI/UX / Accessibility</p><h1>アクセシビリティを壊さないレスポンシブ実装術</h1><p class="article-lede">スマホ対応で文字を小さくし、要素を詰め込むほど、体験は脆くなります。美しいレイアウトを保ちながら、読める・押せる・迷わない状態を作ります。</p></div>
+        <div class="article-meta-grid"><p><strong>Published</strong><span>2026-04-24</span></p><p><strong>Read Time</strong><span>6 min</span></p><p><strong>Focus</strong><span>Responsive / WCAG / QA</span></p></div>
+      </header>
+      <figure class="article-cover"><img src="../assets/images/post4-cover.png" alt="アクセシビリティを保つレスポンシブ実装を表現した記事カバー" /></figure>
+      <div class="article-layout">
+        <aside class="article-aside"><nav aria-label="Table of contents"><p class="meta">Contents</p><a href="#density">密度</a><a href="#type">文字設計</a><a href="#touch">タッチ領域</a><a href="#media">画像</a><a href="#qa">検証</a></nav><div class="article-note"><p class="meta">Takeaway</p><p>レスポンシブは幅の調整ではなく、優先度の再編集です。</p></div></aside>
+        <div class="article-content">
+          <h2 id="density">小さい画面では情報の順番を変える</h2>
+          <p>デスクトップの横並びをそのまま縦に積むと、重要なCTAが遠くなります。スマホでは、導入文、証拠、主要アクション、詳細の順に再編集し、読み手が迷わない流れを作ります。</p>
+          <p>優先度の再編集とは、要素を減らすことだけではありません。PCでは横に置いて比較させる情報を、スマホでは「結論、理由、証拠、次の行動」の順に並べ替えることです。画面幅が狭いほど、読み手は一度に保持できる情報が少なくなります。</p>
+          <figure class="article-inline-figure"><img src="../assets/images/article-4-detail.png" alt="デスクトップとスマホのレスポンシブUI検証を表現した画像" loading="lazy" /><figcaption>レスポンシブ設計では、見た目の縮小ではなく、読み順、押しやすさ、状態表示を同時に見直します。</figcaption></figure>
+          <h2 id="type">見出しは短く、本文は行長を守る</h2>
+          <p>スマホで見出しが2文字だけ次の行に落ちると、画面の完成度が急に下がります。見出しの言葉を短くする、最大幅を調整する、行間を少し広げるなど、CSSとコピーの両方で整えます。</p>
+          <p>本文は1行が長すぎても短すぎても読みづらくなります。カード内の本文、記事本文、メタ情報でそれぞれ行長を変え、見出しだけが大きく浮かないようにします。レスポンシブの品質は、派手なレイアウトよりもこうした細部に表れます。</p>
+          <h2 id="touch">押せるサイズと間隔を確保する</h2>
+          <p>アイコンやリンクが近すぎると、見た目が整っていても操作で失敗します。ボタンは高さを安定させ、カード全体をリンクにする場合もフォーカス状態を見えるようにします。</p>
+          <ul><li>本文は16px相当を下回らない</li><li>CTAの高さは44px以上を目安にする</li><li>横スクロールするナビは余白で切れ目を示す</li><li>フォーカスリングを消さない</li><li>リンクが連続する場所は上下左右の余白を増やす</li></ul>
+          <h2 id="media">画像は“切れても意味が残る”構図にする</h2>
+          <p>デスクトップで横長に美しく見える画像も、スマホでは中央だけが切り取られることがあります。人物、製品、UI画面など重要な要素は中央に詰め込みすぎず、トリミングされても伝わる余白を残します。</p>
+          <p>CMS記事では特に、一覧のサムネイル、記事上部のカバー、本文中の補助画像で比率が変わります。1枚の画像をどこでも使い回すのではなく、使う場所ごとに焦点を決めると、ページ全体が雑に見えません。</p>
+          <h2 id="qa">実機に近い幅で最後に見る</h2>
+          <p>ブラウザの幅を狭めるだけでなく、390px前後のスマホ幅、768px前後のタブレット幅、1440px以上のデスクトップ幅で確認します。文字の重なり、画像の切れ、固定ヘッダーの干渉を重点的に見ます。</p>
+          <p>最終確認では、縦スクロールのテンポも見ます。見出し、画像、本文、CTAが同じリズムで続くと、長いページでも疲れにくくなります。逆に、画像だけが大きすぎる、カードだけが詰まりすぎると、スマホではすぐ違和感になります。</p>
+          <div class="article-footer-cta"><strong>Next:</strong> この記事の考え方は、問い合わせフォームのUXにもつながります。</div>
+        </div>
+      </div>
+    </article>
+    <section class="related-section"><p class="eyebrow">Related</p><div class="related-grid"><a class="related-card" href="post-12.html"><p class="meta">Workflow</p><h3>問い合わせフォームUX</h3></a><a class="related-card" href="post-9.html"><p class="meta">UI/UX</p><h3>LPのファーストビューを強くする情報設計</h3></a><a class="related-card" href="../index.html#journal"><p class="meta">Journal</p><h3>記事一覧へ戻る</h3></a></div></section>
+  </main>
+  <footer><div class="container footer-grid"><p>Tomotari Haruki All Rights Reserved.</p></div></footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

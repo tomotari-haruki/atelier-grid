@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="静的HTMLのポートフォリオをmicroCMSへ移行しやすくするためのデータ設計。" />
+  <title>microCMSへ移行しやすい静的HTMLのデータ設計 | Atelier Grid</title>
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body class="article-page">
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
+  <header class="site-header"><div class="container nav"><a class="brand" href="../index.html"><span class="brand-mark">AG</span><span>Atelier Grid</span></a><nav class="nav-links" aria-label="Article navigation"><a href="../index.html#journal">Journal</a><a href="../index.html#contact">Contact</a></nav></div></header>
+  <main id="main" class="container article-shell">
+    <article>
+      <header class="article-hero">
+        <div><p class="eyebrow">Workflow / Headless CMS</p><h1>microCMSへ移行しやすい静的HTMLのデータ設計</h1><p class="article-lede">静的HTMLで作ったデモも、最初からデータの粒度を揃えておけば、後からHeadless CMSへ移行しやすくなります。</p></div>
+        <div class="article-meta-grid"><p><strong>Published</strong><span>2026-05-19</span></p><p><strong>Read Time</strong><span>8 min</span></p><p><strong>Focus</strong><span>CMS / Schema / Scale</span></p></div>
+      </header>
+      <figure class="article-cover"><img src="../assets/images/post14-cover.png" alt="Headless CMSへの移行設計を表現した記事カバー" /></figure>
+      <div class="article-layout">
+        <aside class="article-aside"><nav aria-label="Table of contents"><p class="meta">Contents</p><a href="#fields">フィールド</a><a href="#modules">本文モジュール</a><a href="#media">画像</a><a href="#routing">URL</a><a href="#migration">移行</a></nav><div class="article-note"><p class="meta">Takeaway</p><p>CMS移行は、実装より前に“記事を何の単位で持つか”を決めると楽になります。</p></div></aside>
+        <div class="article-content">
+          <h2 id="fields">まず記事を構成するフィールドを分解する</h2>
+          <p>タイトル、リード文、カテゴリ、タグ、公開日、読了時間、アイキャッチ、本文、関連記事。静的HTMLではひとつのページに見えても、CMSではそれぞれが管理項目です。最初にフィールドとして分けて考えると、後からAPI化しやすくなります。</p>
+          <p>大切なのは、見た目のブロックではなく編集者が更新する単位で分けることです。例えば、アイキャッチのalt、記事カード用の短い説明、SEO用のdescriptionは似ていても用途が違います。1つの文章を無理に使い回すと、表示場所によって不自然になります。</p>
+          <figure class="article-inline-figure"><img src="../assets/images/article-14-detail.png" alt="Headless CMSのフィールド設計と記事テンプレートを表現したUI画像" loading="lazy" /><figcaption>静的HTMLの時点で、タイトル、要約、メタ情報、画像、本文ブロックを分けて考えると移行が滑らかになります。</figcaption></figure>
+          <h2 id="modules">本文は自由入力と固定モジュールを混ぜる</h2>
+          <p>記事本文を完全なリッチテキストにすると柔軟ですが、毎回レイアウトが崩れる可能性があります。一方で固定モジュールだけにすると、書き手の自由度が下がります。見出し、本文、画像、引用、チェックリスト、CTAのように、よく使う単位だけをモジュール化するのが現実的です。</p>
+          <p>このサイトのようなデザイナー向けポートフォリオでは、本文中のビジュアルが重要です。画像ブロックには、画像、alt、キャプション、表示比率を持たせると、記事ごとの見た目が安定します。</p>
+          <h2 id="media">画像は“表示場所”ごとに用途を持たせる</h2>
+          <p>CMSでは、アイキャッチ、記事本文画像、OGP画像、一覧サムネイルを分けるかどうかが重要です。1枚で済ませると管理は楽ですが、トリミングや情報量が合わない場面が出ます。少なくとも、カバー画像と本文補助画像は分けて持たせる方が見栄えは安定します。</p>
+          <ul><li>カバー画像は広い面で世界観を作る</li><li>本文画像は説明内容を補助する</li><li>OGP画像はタイトル可読性を優先する</li><li>altとキャプションを別フィールドにする</li></ul>
+          <h2 id="routing">URLは記事タイトルではなくslugで管理する</h2>
+          <p>日本語タイトルをそのままURLにすると、共有時に長くなりやすく、変更にも弱くなります。CMSへ移行する前提なら、post-14のようなIDだけでなく、headless-cms-schemaのようなslugを持たせると管理しやすくなります。</p>
+          <p>slugは一度公開したら変えない前提で設計します。タイトルが変わってもURLが変わらないようにしておくと、検索やSNS共有、関連記事リンクが壊れにくくなります。</p>
+          <h2 id="migration">移行前にHTML側の命名を整える</h2>
+          <p>将来CMS化するなら、静的HTMLでもclass名、画像名、カテゴリ名、タグ名を揃えておきます。データ構造を意識した名前にしておくと、後からJSONやAPIレスポンスへ置き換える時に迷いません。</p>
+          <p>完璧なCMSを最初から作る必要はありません。静的HTMLで完成イメージを作り、必要なフィールドが見えた段階で移行すると、見た目と運用の両方に合ったCMS設計になります。</p>
+          <div class="article-footer-cta"><strong>Next:</strong> CMS化の次は、OGP画像も記事データから自動生成できるようになります。</div>
+        </div>
+      </div>
+    </article>
+    <section class="related-section"><p class="eyebrow">Related</p><div class="related-grid"><a class="related-card" href="post-7.html"><p class="meta">Workflow</p><h3>CMS記事をポートフォリオ資産に変える編集カレンダー</h3></a><a class="related-card" href="post-15.html"><p class="meta">Branding</p><h3>ポートフォリオのOGP画像を自動生成する設計</h3></a><a class="related-card" href="../index.html#journal"><p class="meta">Journal</p><h3>記事一覧へ戻る</h3></a></div></section>
+  </main>
+  <footer><div class="container footer-grid"><p>Tomotari Haruki All Rights Reserved.</p></div></footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

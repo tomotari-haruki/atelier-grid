@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Notionでデザイン案件の進行管理ボードを作り、遅延と手戻りを減らす実務設計。" />
+  <title>Notionでつくるデザイン案件の進行管理ボード | Atelier Grid</title>
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body class="article-page">
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
+  <header class="site-header"><div class="container nav"><a class="brand" href="../index.html"><span class="brand-mark">AG</span><span>Atelier Grid</span></a><nav class="nav-links" aria-label="Article navigation"><a href="../index.html#journal">Journal</a><a href="../index.html#contact">Contact</a></nav></div></header>
+  <main id="main" class="container article-shell">
+    <article>
+      <header class="article-hero">
+        <div><p class="eyebrow">Workflow / Notion</p><h1>Notionでつくるデザイン案件の進行管理ボード</h1><p class="article-lede">案件管理は、タスクを並べるだけでは足りません。判断待ち、素材待ち、レビュー待ちを見える化して、手戻りの温度を早めに下げます。</p></div>
+        <div class="article-meta-grid"><p><strong>Published</strong><span>2026-04-20</span></p><p><strong>Read Time</strong><span>5 min</span></p><p><strong>Focus</strong><span>Board / Review / Delivery</span></p></div>
+      </header>
+      <figure class="article-cover"><img src="../assets/images/post3-cover.png" alt="デザイン案件の進行管理ボードを表現した記事カバー" /></figure>
+      <div class="article-layout">
+        <aside class="article-aside"><nav aria-label="Table of contents"><p class="meta">Contents</p><a href="#columns">列設計</a><a href="#fields">プロパティ</a><a href="#rhythm">進行リズム</a><a href="#review">レビュー</a><a href="#handoff">納品前</a></nav><div class="article-note"><p class="meta">Takeaway</p><p>ボードは“今どこか”より、“次に誰が何を判断するか”が見えると強い。</p></div></aside>
+        <div class="article-content">
+          <h2 id="columns">列は工程名ではなく状態で分ける</h2>
+          <p>「ヒアリング」「デザイン」「実装」と工程だけで分けると、止まっている理由が見えません。おすすめは、Backlog、Doing、Waiting Review、Waiting Material、Doneのように、次の行動が分かる列にすることです。</p>
+          <p>デザイン案件では、作業している時間よりも、確認を待っている時間の方が長くなることがあります。だからこそ、ボードは作業者のためだけでなく、確認者が今見るべきカードをすぐ見つけられる構造にします。</p>
+          <figure class="article-inline-figure"><img src="../assets/images/article-3-detail.png" alt="デザイン案件の進行管理ボードを表現したUI画像" loading="lazy" /><figcaption>工程名ではなく状態を中心に組むと、素材待ち、レビュー待ち、判断待ちが一目で分かります。</figcaption></figure>
+          <h2 id="fields">プロパティは少なく、でも判断に必要なものは残す</h2>
+          <p>担当者、締切、優先度、関連URL、確認者、決定ログ。最初から項目を増やしすぎると更新されなくなりますが、レビューで必要な情報が不足するとやり取りが増えます。</p>
+          <p>フィールドは“入力したくなる量”に抑えるのが大切です。完璧な管理表より、毎日更新される軽いボードの方が信頼できます。優先度と締切だけは全員が同じ意味で読めるようにし、その他は案件の複雑さに応じて増やします。</p>
+          <ul><li>締切は最終納品日ではなく次の確認期限にする</li><li>素材待ちは専用ステータスにする</li><li>決定事項はコメントではなくログとして残す</li><li>確認者と最終判断者を分けて記録する</li></ul>
+          <h2 id="rhythm">週次レビューで“遅れの予兆”を見る</h2>
+          <p>進行管理は納期直前に見るものではありません。週に一度、止まっているカード、確認待ちが長いカード、優先度が変わったカードだけを確認します。すべてのタスクを読み直す必要はなく、流れが詰まっている場所に集中します。</p>
+          <p>この時に有効なのが、カードに“次の一手”を書く運用です。「確認待ち」だけではなく、「5月20日までにKVの方向性を決定」のように書くと、誰が何をすれば進むのかが明確になります。</p>
+          <h2 id="review">レビューは“戻す理由”をテンプレート化する</h2>
+          <p>修正依頼の粒度が揃うと、制作側もクライアント側も疲れにくくなります。意図、該当箇所、希望する状態、優先度の4点を入力できるフォームを用意しておくと、レビューが進行管理に接続されます。</p>
+          <p>レビューコメントは感想と指示が混ざりやすい領域です。感想は方向性の判断に必要ですが、そのまま修正タスクにすると抽象度が高くなります。コメントを受けたら、制作側が“実行できるカード”に変換してからボードへ戻します。</p>
+          <h2 id="handoff">納品前は“引き継げる状態”まで見る</h2>
+          <p>最後のチェックでは、デザインデータ、書き出し素材、実装メモ、未決事項、更新方法を同じ場所にまとめます。案件終了後に誰かが見返した時、なぜその判断になったのかを追える状態にしておくと、次回提案や保守対応が格段に楽になります。</p>
+          <div class="article-footer-cta"><strong>Next:</strong> このボードは、CMS編集カレンダーにも応用できます。</div>
+        </div>
+      </div>
+    </article>
+    <section class="related-section"><p class="eyebrow">Related</p><div class="related-grid"><a class="related-card" href="post-7.html"><p class="meta">Workflow</p><h3>CMS記事をポートフォリオ資産に変える編集カレンダー</h3></a><a class="related-card" href="post-12.html"><p class="meta">Workflow</p><h3>問い合わせフォームUX</h3></a><a class="related-card" href="../index.html#journal"><p class="meta">Journal</p><h3>記事一覧へ戻る</h3></a></div></section>
+  </main>
+  <footer><div class="container footer-grid"><p>Tomotari Haruki All Rights Reserved.</p></div></footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

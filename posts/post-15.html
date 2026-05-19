@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ポートフォリオ記事のOGP画像を自動生成し、SNS共有の見栄えを安定させる設計。" />
+  <title>ポートフォリオのOGP画像を自動生成する設計 | Atelier Grid</title>
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body class="article-page">
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
+  <header class="site-header"><div class="container nav"><a class="brand" href="../index.html"><span class="brand-mark">AG</span><span>Atelier Grid</span></a><nav class="nav-links" aria-label="Article navigation"><a href="../index.html#journal">Journal</a><a href="../index.html#contact">Contact</a></nav></div></header>
+  <main id="main" class="container article-shell">
+    <article>
+      <header class="article-hero">
+        <div><p class="eyebrow">Branding / OGP</p><h1>ポートフォリオのOGP画像を自動生成する設計</h1><p class="article-lede">記事が増えるほど、SNSで共有された時の見え方も品質になります。OGP画像を仕組み化すると、更新するたびにブランドの印象を保てます。</p></div>
+        <div class="article-meta-grid"><p><strong>Published</strong><span>2026-05-19</span></p><p><strong>Read Time</strong><span>7 min</span></p><p><strong>Focus</strong><span>OGP / Brand / Automation</span></p></div>
+      </header>
+      <figure class="article-cover"><img src="../assets/images/post15-cover.png" alt="OGP画像の自動生成設計を表現した記事カバー" /></figure>
+      <div class="article-layout">
+        <aside class="article-aside"><nav aria-label="Table of contents"><p class="meta">Contents</p><a href="#role">役割</a><a href="#template">テンプレート</a><a href="#image">画像</a><a href="#safe">可読性</a><a href="#workflow">運用</a></nav><div class="article-note"><p class="meta">Takeaway</p><p>OGP画像はSNS用の飾りではなく、記事の第一印象を作る小さな広告枠です。</p></div></aside>
+        <div class="article-content">
+          <h2 id="role">OGP画像は記事の入口をデザインする場所</h2>
+          <p>ポートフォリオの記事は、サイト内だけで読まれるとは限りません。SNS、チャット、提案資料、採用担当者への共有リンクなど、外部で最初に見られることがあります。その時に表示されるOGP画像は、記事の品質を予告する小さなファーストビューです。</p>
+          <p>タイトルが読みにくい、画像が暗すぎる、毎回バラバラの見た目になる。こうした状態は、記事本文の品質が高くても入口で損をします。OGP画像を自動生成できる設計にしておくと、記事が増えても印象が揃います。</p>
+          <figure class="article-inline-figure"><img src="../assets/images/article-15-detail.png" alt="OGP画像テンプレートとSNSプレビューを表現したUI画像" loading="lazy" /><figcaption>OGP画像は、タイトル、カテゴリ、背景ビジュアル、ブランド要素を固定ルールで組み合わせると運用しやすくなります。</figcaption></figure>
+          <h2 id="template">テンプレートは1種類に絞りすぎない</h2>
+          <p>すべての記事に同じテンプレートを使うと統一感は出ますが、記事のテーマが伝わりにくくなる場合があります。ノウハウ記事、ケーススタディ、CMS運用記事、ブランド記事のように、カテゴリごとに少しだけレイアウトを変えると、一覧で見た時にも豊かになります。</p>
+          <p>ただし、テンプレートを増やしすぎると運用が重くなります。背景、タイトル位置、カテゴリ表示、アクセント色の4点だけを変えられる程度にし、ブランドの基礎要素は固定します。</p>
+          <h2 id="image">背景画像はタイトルを読ませるために使う</h2>
+          <p>OGP画像では、背景ビジュアルの主張が強すぎるとタイトルが読めません。記事カバーをそのまま使う場合も、暗いオーバーレイやぼかし、余白を足して、文字の読みやすさを優先します。</p>
+          <ul><li>タイトル領域の背景は情報量を抑える</li><li>カテゴリごとにアクセント色を変える</li><li>長いタイトルは2行までに収める</li><li>小さいプレビューでも読める太さにする</li></ul>
+          <h2 id="safe">スマホの小さいプレビューで確認する</h2>
+          <p>OGP画像は大きな制作画面で見ると美しくても、SNSでは小さく表示されます。細い文字、低コントラスト、端に寄せたロゴは簡単に読めなくなります。完成前に、実際の共有サイズに近い小さなプレビューで確認します。</p>
+          <p>日本語タイトルの場合、改行位置も重要です。2文字だけ次の行に落ちると、画像全体の完成度が下がります。テンプレート側で最大文字数、行数、余白を決め、必要ならタイトルの短縮版を別フィールドで持たせます。</p>
+          <h2 id="workflow">CMSデータから自動生成できる形にする</h2>
+          <p>記事タイトル、カテゴリ、公開日、カバー画像、著者名を使えば、OGP画像は自動生成できます。最初は静的な画像でも、将来的にはCMSデータを読み込んで、記事公開時に自動で書き出す形へ拡張できます。</p>
+          <p>自動化の目的は、手を抜くことではありません。毎回同じ品質基準で作れるようにすることです。記事が増えるほど、こうした仕組みがポートフォリオ全体の完成度を底上げします。</p>
+          <div class="article-footer-cta"><strong>Next:</strong> OGP設計は、CMSデータ設計とセットにすると運用まで美しくなります。</div>
+        </div>
+      </div>
+    </article>
+    <section class="related-section"><p class="eyebrow">Related</p><div class="related-grid"><a class="related-card" href="post-14.html"><p class="meta">Workflow</p><h3>microCMSへ移行しやすい静的HTMLのデータ設計</h3></a><a class="related-card" href="post-8.html"><p class="meta">Branding</p><h3>AI画像生成をWeb制作に組み込むアートディレクション</h3></a><a class="related-card" href="../index.html#journal"><p class="meta">Journal</p><h3>記事一覧へ戻る</h3></a></div></section>
+  </main>
+  <footer><div class="container footer-grid"><p>Tomotari Haruki All Rights Reserved.</p></div></footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
